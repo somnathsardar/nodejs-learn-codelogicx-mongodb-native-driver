@@ -1,57 +1,63 @@
-const { MongoClient, ObjectId } = require('mongodb');
+const { MongoClient, ObjectId } = require("mongodb");
+const chalk = require("chalk");
+const { insertOne, insertMany } = require("./utils/insert");
+const { findOne, find } = require("./utils/read");
+const { updateOne, updateMany } = require("./utils/update");
+const { deleteOne, deleteMany } = require("./utils/delete");
 
 const databaseUrl = "mongodb://127.0.0.1:27017";
 const databseName = "task-manager";
-const id = ObjectId();
 
-console.log(id);
+const id = ObjectId();
+// console.log(id);
 
 //Mongodb crud operation
 MongoClient.connect(databaseUrl, { useNewUrlParser: true }, (error, client) => {
-  if (error) return console.log("Unable to connect to database.");
-
-  console.log("Connected to database.");
-
-  //referencing to database and creating one db object
+  if (error) return console.log(chalk.red("Database connection fail."));
+  console.log(chalk.green("Connected to database."));
   const db = client.db(databseName);
 
-  /* Insert one */
-  db.collection("users").insertOne(
-    {
-      name: "Chhabi Sardar",
-      age: 52,
-    },
-    (error, result) => {
-      if (error) return console.log("Unable to insert document");
-      console.log(result);
-      /*
-       *  result => {
-       *              acknowledged: true,
-       *              insertedId: new ObjectId("618bc185a6e7713f8965f7a0")
-       *            }
-       */
-    }
+  // Insert one
+  /* insertOne(db, "users", { name: "Somnath Sardar", age: 25 }); */
+
+  // Insert many
+  /* insertMany(db, "users", [
+    { name: "Chhabi Sardar", age: 50 },
+    { name: "Rabin Sardar", age: 27 },
+  ]); */
+
+  // Find one
+  /* findOne(db, "users", { name: "Chhabi Sardar" }); */
+
+  // Find
+  /* find(db, "users"); */
+
+  // Update one
+  /* updateOne(
+    db,
+    "users",
+    { _id: new ObjectId("618cae47f64fc9039d295fe1") },
+    { $set: { name: "Rabi" } }
   );
 
-  /* Insert many */
-  db.collection("users").insertMany(
-    [
-      { name: "Som", age: 10 },
-      { name: "Rabi", age: 30 },
-    ],
-    (error, result) => {
-      if (error) return console.log("Unable insert document.");
-      console.log(result);
-      /* 
-      * result => {
-      *             acknowledged: true,
-      *             insertedCount: 2,
-      *             insertedIds: {
-      *               '0': new ObjectId("618bc4f7e6b1572d5a8481a3"),
-      *               '1': new ObjectId("618bc4f7e6b1572d5a8481a4")
-      *             }
-      *           }
-      */
-    }
-  );
+  updateOne(
+    db,
+    "users",
+    { _id: new ObjectId("618cae47f64fc9039d295fe1") },
+    { $inc: { age: 2 } }
+  ); */
+
+  // Update many
+  /* updateMany(
+    db,
+    "tasks",
+    {status: false},
+    {$set: {status: true}}
+  ) */
+
+  // Delete one
+  /* deleteOne(db, "tasks", { title: "Task 4" }); */
+
+  // Delete many
+  /* deleteMany(db, "tasks", {status: true}); */
 });

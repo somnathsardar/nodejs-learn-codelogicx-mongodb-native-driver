@@ -18,46 +18,46 @@ MongoClient.connect(databaseUrl, { useNewUrlParser: true }, (error, client) => {
   const db = client.db(databseName);
 
   // Insert one
-  /* insertOne(db, "users", { name: "Somnath Sardar", age: 25 }); */
+  // insertOne(db, "users", { name: "Somnath Sardar", age: 25 });
 
   // Insert many
-  /* insertMany(db, "users", [
-    { name: "Chhabi Sardar", age: 50 },
-    { name: "Rabin Sardar", age: 27 },
-  ]); */
+  // insertMany(db, "users", [
+  //   { name: "Chhabi Sardar", age: 50 },
+  //   { name: "Rabin Sardar", age: 27 },
+  // ]);
 
   // Find one
-  /* findOne(db, "users", { name: "Chhabi Sardar" }); */
+  // findOne(db, "users", { name: "Chhabi Sardar" });
 
   // Find
-  /* find(db, "users"); */
+  // find(db, "users");
 
   // Update one
-  /* updateOne(
-    db,
-    "users",
-    { _id: new ObjectId("618cae47f64fc9039d295fe1") },
-    { $set: { name: "Rabi" } }
-  );
+  // updateOne(
+  //   db,
+  //   "users",
+  //   { _id: new ObjectId("618ce0842551988ea760d780") },
+  //   { $set: { name: "Rabi" } }
+  // );
 
-  updateOne(
-    db,
-    "users",
-    { _id: new ObjectId("618cae47f64fc9039d295fe1") },
-    { $inc: { age: 2 } }
-  ); */
+  // updateOne(
+  //   db,
+  //   "users",
+  //   { _id: new ObjectId("618ce0842551988ea760d780") },
+  //   { $inc: { age: 2 } }
+  // );
 
   // Update many
-  /* updateMany(
-    db,
-    "tasks",
-    {status: false},
-    {$set: {status: true}}
-  ) */
+  // updateMany(
+  //   db,
+  //   "tasks",
+  //   {status: false},
+  //   {$set: {status: true}}
+  // )
 
   // Delete one
-  /* deleteOne(db, "tasks", { title: "Task 4" }); */
+  // deleteOne(db, "tasks", { title: "Task 4" });
 
   // Delete many
-  /* deleteMany(db, "tasks", {status: true}); */
+  // deleteMany(db, "tasks", {status: true});
 });
